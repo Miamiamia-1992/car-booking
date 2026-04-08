@@ -22,6 +22,12 @@ router.get('/vehicles', authenticate, (req, res) => {
   res.json(vehicles);
 });
 
+router.put('/vehicles/:id', authenticate, (req, res) => {
+  const { name, plate } = req.body;
+  db.prepare('UPDATE vehicles SET name = ?, plate = ? WHERE id = ?').run(name, plate, req.params.id);
+  res.json({ success: true });
+});
+
 router.get('/pending', authenticate, (req, res) => {
   const bookings = db.prepare(`
     SELECT b.*, v.name as vehicle_name, v.plate as vehicle_plate

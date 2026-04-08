@@ -68,7 +68,7 @@ export async function initDatabase() {
     const vehicles = [
       ['白色大通（油车）', '京MGW855'],
       ['长安汽车（新能源）', '京ABN2758'],
-      ['红旗汽车（油车仅所领导使用）', '京N3FD76'],
+      ['红旗汽车（油车，限领导使用。约此车请提前与安全保卫处联系）', '京N3FD76'],
     ];
     vehicles.forEach(v => {
       db.run('INSERT INTO vehicles (name, plate) VALUES (?, ?)', v);
